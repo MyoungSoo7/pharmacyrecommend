@@ -19,5 +19,8 @@ jobs:
         distribution: 'adopt'
         java-version: '17'
 
+    - name: Run chmod to make gradlew executable
+      run: chmod +x ./gradlew
+      
     - name: Build with Gradle and Run Tests
-      run: chmod +x ./gradlew clean test
+      run: ./gradlew clean test
