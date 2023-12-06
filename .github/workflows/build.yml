@@ -20,10 +20,10 @@ jobs:
         java-version: '17'
 
     - name: Build with Gradle
-      run: ./gradlew clean build
+      run: chmod +x ./gradlew clean build
 
     - name: Run Tests and Generate JaCoCo Report
-      run: ./gradlew test jacocoTestReport
+      run: chmod +x ./gradlew test jacocoTestReport
 
     - name: Upload JaCoCo Coverage Report
       uses: actions/upload-artifact@v2
