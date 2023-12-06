@@ -19,11 +19,14 @@ jobs:
         distribution: 'adopt'
         java-version: '17'
 
+    - name: Run chmod to make gradlew executable
+      run: chmod +x ./gradlew
+
     - name: Build with Gradle
-      run: chmod +x ./gradlew clean build
+      run: ./gradlew clean build
 
     - name: Run Tests and Generate JaCoCo Report
-      run: chmod +x ./gradlew test jacocoTestReport
+      run: ./gradlew test jacocoTestReport
 
     - name: Upload JaCoCo Coverage Report
       uses: actions/upload-artifact@v2
