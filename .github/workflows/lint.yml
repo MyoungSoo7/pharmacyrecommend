@@ -20,4 +20,7 @@ jobs:
           java-version: '17'
 
       - name: Run Lint
-        run: ./gradlew lint
+        run: chmod +x ./gradlew lint
+
+            
+      
