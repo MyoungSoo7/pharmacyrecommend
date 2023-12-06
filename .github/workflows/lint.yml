@@ -19,8 +19,10 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew
       - name: Run Lint
-        run: chmod +x ./gradlew lint
+        run: ./gradlew lint
 
             
       
