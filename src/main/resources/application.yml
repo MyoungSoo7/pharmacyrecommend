@@ -8,7 +8,6 @@ spring:
         - common
 
 
-
 ---
 spring:
   config:
@@ -20,8 +19,11 @@ kakao:
     api:
       key: ${KAKAO_REST_API_KEY}
 
+#서버 한글처리(properties # 붙이면 주석)
 server:
-  port: 9090
+  servlet:
+    encoding:
+      force-response: true
 
 ---
 spring:
@@ -36,17 +38,23 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
     open-in-view: false
+
   data:
     redis:
       host: localhost
       port: 6379
 
+
+
 pharmacy:
   recommendation:
     base:
-      url: http://localhost:9090/dir/
+      url: http://localhost:8080/dir/
 
 ---
 spring:
@@ -71,6 +79,6 @@ spring:
 pharmacy:
   recommendation:
     base:
-      url: http://127.0.0.1/dir
+      url: http://3.38.78.187/dir/
 
 

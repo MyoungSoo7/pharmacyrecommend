@@ -5,7 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./redis
-    image: iamipro/pharmacyrecommendationredis
+    image: iamipro/pharmacy-recommendation-redis
+
     ports:
       - "6379:6379"
   pharmacy-recommendation-database:
@@ -13,7 +14,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./database
-    image: iamipro/pharmacyrecommendationdatabase
+    image: iamipro/pharmacy-recommendation-database
     environment:
       - MARIADB_DATABASE=pharmacy-recommendation
       - MARIADB_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
@@ -21,4 +22,4 @@ services:
       - ./database/config:/etc/mysql/conf.d
       - ./database/init:/docker-entrypoint-initdb.d
     ports:
-      - "3307:3307"
+      - "3306:3306"

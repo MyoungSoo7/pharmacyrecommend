@@ -29,7 +29,7 @@ public class KakaoAddressSearchService {
     private String kakaoRestApiKey;
 
     @Retryable(
-            value = {RuntimeException.class},
+            exceptionExpression = "RuntimeException.class",
             maxAttempts = 2,
             backoff = @Backoff(delay = 2000)
     )

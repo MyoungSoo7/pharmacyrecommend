@@ -31,9 +31,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.retry:spring-retry'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     // handlebars
-    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    //implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.4'
 
     implementation 'com.opencsv:opencsv:4.3'
     // https://github.com/seruco/base62
@@ -41,12 +42,12 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // mockWebServer
-    testImplementation('com.squareup.okhttp3:okhttp:4.10.0')
-    testImplementation('com.squareup.okhttp3:mockwebserver:4.10.0')
+    testImplementation('com.squareup.okhttp3:okhttp')
+    testImplementation('com.squareup.okhttp3:mockwebserver')
 
     // testcontainers
-    testImplementation 'org.testcontainers:spock:1.17.1'
-    testImplementation 'org.testcontainers:mariadb:1.17.1'
+    testImplementation 'org.testcontainers:spock'
+    testImplementation 'org.testcontainers:mariadb'
 
     // spock
     testImplementation('org.spockframework:spock-core:2.1-groovy-3.0')
@@ -61,9 +62,10 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+// $ ./gradlew clean build -PKAKAO_REST_API_KEY={api key 값} 명령어로 전체 테스트 및 빌드하여 jar 파일 생성
 processTestResources {
-    boolean hasProperty = project.hasProperty('KAKAO_REST_API_KEY')
-    println "hasProperty : " + hasProperty
+    boolean hasProperty = project.hasProperty("KAKAO_REST_API_KEY")
+    System.out.println("Set kakao rest api key: $hasProperty")
     filesMatching('**/application.yml') {
         expand(project.properties)
     }
