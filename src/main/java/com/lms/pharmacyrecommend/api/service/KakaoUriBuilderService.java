@@ -1,6 +1,5 @@
 package com.lms.pharmacyrecommend.api.service;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,29 +14,31 @@ public class KakaoUriBuilderService {
 
     private static final String KAKAO_LOCAL_CATEGORY_SEARCH_URL = "https://dapi.kakao.com/v2/local/search/category.json";
 
+    public URI buildUriByAddressSearch(String address) {
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(KAKAO_LOCAL_SEARCH_ADDRESS_URL);
+        uriBuilder.queryParam("query", address);
 
-    public URI buildUriBYAddressSearch(String address) {
+        URI uri = uriBuilder.build().encode().toUri(); // encode default utf-8
+        log.info("[KakaoAddressSearchService buildUriByAddressSearch] address: {}, uri: {}", address, uri);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(KAKAO_LOCAL_SEARCH_ADDRESS_URL).queryParam("query", address);
-        URI uri = builder.build().encode().toUri();
-
-        log.info("[KakaoUriBuilderService buildUriBYAddressSearch] address :{}, uri : {}",address, uri);
         return uri;
     }
 
-    public URI buildUriByCategorySearch(String category, double x, double y, double radius) {
-        double radiusInMeter = radius * 1000;
+    public URI buildUriByCategorySearch(double latitude, double longitude, double radius, String category) {
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(KAKAO_LOCAL_CATEGORY_SEARCH_URL)
-                .queryParam("category_group_code", category)
-                .queryParam("x", x)
-                .queryParam("y", y)
-                .queryParam("radius", radiusInMeter)
-                .queryParam("sort", "distance");
-        URI uri = builder.build().encode().toUri();
+        double meterRadius = radius * 1000;
 
-        log.info("[KakaoUriBuilderService buildUriByCategorySearch] uri : {}",  uri);
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(KAKAO_LOCAL_CATEGORY_SEARCH_URL);
+        uriBuilder.queryParam("category_group_code", category);
+        uriBuilder.queryParam("x", longitude);
+        uriBuilder.queryParam("y", latitude);
+        uriBuilder.queryParam("radius", meterRadius);
+        uriBuilder.queryParam("sort","distance");
+
+        URI uri = uriBuilder.build().encode().toUri();
+
+        log.info("[KakaoAddressSearchService buildUriByCategorySearch] uri: {} ", uri);
+
         return uri;
     }
-
 }
