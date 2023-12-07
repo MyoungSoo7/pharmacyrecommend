@@ -1,6 +1,6 @@
-package com.lms.pharmacyrecommend.api.pharmacy.repository;
+package com.lms.pharmacyrecommend.pharmacy.repository;
 
-import com.lms.pharmacyrecommend.api.pharmacy.entity.Pharmacy;
+import com.lms.pharmacyrecommend.pharmacy.entity.Pharmacy;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PharmacyRepository extends JpaRepository<Pharmacy, Long> {

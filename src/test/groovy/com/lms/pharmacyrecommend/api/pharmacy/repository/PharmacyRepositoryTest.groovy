@@ -1,5 +1,6 @@
 package com.lms.pharmacyrecommend.api.pharmacy.repository
 
+import com.lms.pharmacyrecommend.pharmacy.repository.PharmacyRepository
 import org.springframework.beans.factory.annotation.Autowired
 
 import java.time.LocalDateTime

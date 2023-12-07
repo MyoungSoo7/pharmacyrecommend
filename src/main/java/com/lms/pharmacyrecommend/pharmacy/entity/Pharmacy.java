@@ -1,4 +1,4 @@
-package com.lms.pharmacyrecommend.api.pharmacy.entity;
+package com.lms.pharmacyrecommend.pharmacy.entity;
 
 
 import jakarta.persistence.Entity;
