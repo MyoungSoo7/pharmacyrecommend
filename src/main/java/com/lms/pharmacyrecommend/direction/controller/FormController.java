@@ -5,7 +5,6 @@ import com.lms.pharmacyrecommend.pharmacy.service.PharmacyRecommendationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,16 +23,8 @@ public class FormController {
         return "main";
     }
 
-    @GetMapping("/hi")
-    public String niceToMeetYou(Model model) {
-        model.addAttribute("username", "깡돌");
-        log.info("greetings");
-        return "greetings";
-    }
-
     @PostMapping("/search")
     public ModelAndView postDirection(@ModelAttribute InputDto inputDto)  {
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("output");
         modelAndView.addObject("outputFormList",

@@ -55,7 +55,7 @@ public class DirectionService {
 
     public List<Direction> buildDirectionList(DocumentDto documentDto) {
         if(Objects.isNull(documentDto)) return Collections.emptyList();
-
+        log.info("documentDto>>>>>>"+documentDto.getAddressName());
         return pharmacySearchService.searchPharmacyDtoList()
                 .stream().map(pharmacyDto ->
                         Direction.builder()

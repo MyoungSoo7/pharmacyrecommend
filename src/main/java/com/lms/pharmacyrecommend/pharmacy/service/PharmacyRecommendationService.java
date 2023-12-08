@@ -33,19 +33,16 @@ public class PharmacyRecommendationService {
     private String baseUrl;
 
     public List<OutputDto> recommendPharmacyList(String address) {
-
         KakaoApiResponseDto kakaoApiResponseDto = kakaoAddressSearchService.requestAddressSearch(address);
-
         if (Objects.isNull(kakaoApiResponseDto) || CollectionUtils.isEmpty(kakaoApiResponseDto.getDocumentList())) {
             log.error("[PharmacyRecommendationService.recommendPharmacyList fail] Input address: {}", address);
             return Collections.emptyList();
         }
 
         DocumentDto documentDto = kakaoApiResponseDto.getDocumentList().get(0);
-
         List<Direction> directionList = directionService.buildDirectionList(documentDto);
         //List<Direction> directionList = directionService.buildDirectionListByCategoryApi(documentDto);
-
+        log.info("directionList>>>>>>"+directionList);
         return directionService.saveAll(directionList)
                 .stream()
                 .map(this::convertToOutputDto)

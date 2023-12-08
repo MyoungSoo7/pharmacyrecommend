@@ -23,6 +23,7 @@ public class PharmacySearchService {
 
         // redis
         List<PharmacyDto> pharmacyDtoList = pharmacyRedisTemplateService.findAll();
+        log.info("[PharmacySearchService.searchPharmacyDtoList] pharmacyDtoList: {}", pharmacyDtoList);
         if(CollectionUtils.isNotEmpty(pharmacyDtoList)) return pharmacyDtoList;
 
         // db

@@ -2,6 +2,7 @@ package com.lms.pharmacyrecommend.direction.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Builder
 @Getter

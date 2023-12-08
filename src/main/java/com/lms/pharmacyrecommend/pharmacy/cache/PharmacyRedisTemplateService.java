@@ -56,6 +56,7 @@ public class PharmacyRedisTemplateService {
                 PharmacyDto pharmacyDto = deserializePharmacyDto(value);
                 list.add(pharmacyDto);
             }
+            log.info("[PharmacyRedisTemplateService findAll success] list: {}", list.toString());
             return list;
 
         } catch (Exception e) {
