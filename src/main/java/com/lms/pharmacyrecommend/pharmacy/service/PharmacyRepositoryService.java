@@ -32,7 +32,7 @@ public class PharmacyRepositoryService {
         log.info("foo CurrentTransactionName: "+ TransactionSynchronizationManager.getCurrentTransactionName());
         pharmacyList.forEach(pharmacy -> {
            pharmacyRepository.save(pharmacy);
-           throw new RuntimeException("error");
+           //throw new RuntimeException("error");
         });
     }
 

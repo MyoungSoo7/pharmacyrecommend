@@ -3,6 +3,7 @@ package com.lms.pharmacyrecommend.pharmacy.dto;
 import lombok.*;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
