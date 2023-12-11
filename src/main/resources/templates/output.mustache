@@ -31,7 +31,7 @@
         <th>길안내 링크</th>
         <th>로드뷰 링크</th>
     </tr>
-    {{#each outputFormList}}
+    {{#outputFormList}}
         <tr>
             <td>{{pharmacyName}}</td>
             <td>{{pharmacyAddress}}</td>
@@ -39,7 +39,7 @@
             <td><a href="{{directionUrl}}">{{directionUrl}}</a></td>
             <td><a href="{{roadViewUrl}}">{{roadViewUrl}}</a></td>
         </tr>
-    {{/each}}
+    {{/outputFormList}}
 </table>
 <div class="grid-image">
     <img src="/images/kakao.png" alt="kakao" class="img-responsive img-rounded">

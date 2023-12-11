@@ -40,7 +40,9 @@ CREATE TABLE `pharmacy` (
 
 LOCK TABLES `pharmacy` WRITE;
 /*!40000 ALTER TABLE `pharmacy` DISABLE KEYS */;
-INSERT INTO `pharmacy` VALUES
+INSERT INTO `pharmacy`
+(id, created_date, modified_date, latitude, longitude, pharmacy_address, pharmacy_name)
+VALUES
                            (1,'2022-10-17 23:46:34.982624','2022-10-17 23:46:34.982624',37.60894036,127.029052,'서울특별시 성북구 동소문로47길 12','호수온누리약국'),
                            (2,'2022-10-17 23:46:35.025774','2022-10-17 23:46:35.025774',37.61040424,127.0569046,'서울특별시 성북구 화랑로 248','돌곶이온누리약국'),
                            (3,'2022-10-17 23:46:35.028083','2022-10-17 23:46:35.028083',37.60101417,127.0331664,'서울특별시 성북구 종암로 123 홀리데이약국','홀리데이약국'),

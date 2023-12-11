@@ -3,7 +3,7 @@ package com.lms.pharmacyrecommend.direction.dto;
 import lombok.*;
 
 @Getter
-@Builder
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class InputDto {
