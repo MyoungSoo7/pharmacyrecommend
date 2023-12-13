@@ -24,6 +24,7 @@
 ![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/fe7c6124-ac27-4be1-8558-b8ba6f61f135)
 
 ## [테스트]<br>
+> 'grooy 활용해서 테스트'
 * API테스트 
 
 
