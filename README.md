@@ -1,4 +1,4 @@
-# pharmacyrecommend
+# 가까운 약국 3개 추천
 
 [활용기술] <br>
 Java 17 <br>
