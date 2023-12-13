@@ -21,9 +21,10 @@
 
 ## [작업내용]<br>
 * 지도검색 가까운 약국 3개 찾기<br>
-![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/40c9457d-e84f-48ac-a82e-3078760584c0)
-* 지도위치 및 로드 뷰 제공<br>
 ![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/fe7c6124-ac27-4be1-8558-b8ba6f61f135)
+* 지도위치 및 로드 뷰 제공<br>
+![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/40c9457d-e84f-48ac-a82e-3078760584c0)
+
 
 
 
