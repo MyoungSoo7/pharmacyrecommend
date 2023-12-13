@@ -1,6 +1,6 @@
 # 가까운 약국 3개 추천
 
-##[활용기술] <br>
+## [활용기술] <br>
 Java 17 <br>
 SpringBoot 3.2<br>
 mariadb<br>
