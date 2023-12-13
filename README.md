@@ -1,8 +1,8 @@
 # 가까운 약국 3개 추천
 
 ## [활용기술] <br>
-* Java 17 <br>
-* SpringBoot 3.2<br>
+* **Java 17** <br>
+* **SpringBoot 3.2**<br>
 * mariadb<br>
 * redis<br>
 * spring-retry<br>
@@ -11,6 +11,7 @@
 * mustache<br> 
 * docker<br>
 * docker-compose<br>
+* ~~groovy~~
 
 ## [ERD]<br>
 ![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/80e9bcc1-0b6b-49f1-9f42-fae832375626)<br>
