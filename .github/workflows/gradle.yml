@@ -78,13 +78,24 @@ jobs:
           tags: |
             type=sha
             
-      - name: Build and push Docker image to Amazon ECR
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build, tag, and push docker image to Amazon ECR
+        id: build-image
+        env:
+          REGISTRY: ${{ env.REGISTRY }}
+          REPOSITORY: ${{ env.IMAGE_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:latest .
+          docker push $REGISTRY/$REPOSITORY:latest
+          echo "image=$REGISTRY/$REPOSITORY:latest" >> $GITHUB_OUTPUT       
+            
+      # - name: Build and push Docker image to Amazon ECR
+      #   uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     labels: ${{ steps.meta.outputs.labels }}
           
      
 
