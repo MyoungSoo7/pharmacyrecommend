@@ -1,5 +1,7 @@
 FROM openjdk:17
-ARG JAR_FILE=build/libs/app.jar
-COPY ${JAR_FILE} ./app.jar
+WORKDIR /app
+COPY build/libs/app.jar /app/app.jar
+COPY src/main/resources/application.yml /app/application.yml
 ENV TZ=Asia/Seoul
+EXPOSE 8081
 ENTRYPOINT ["java","-jar","/app.jar"]
