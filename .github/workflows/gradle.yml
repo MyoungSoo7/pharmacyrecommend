@@ -14,6 +14,10 @@ on:
 permissions:
   contents: read
 
+env:
+  REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
+  IMAGE_NAME: pharmacy-recommend  
+
 jobs:
   build:
     name: CI
@@ -66,16 +70,23 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag, and push docker image to Amazon ECR
-        id: build-image
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: pharmacy-recommend
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $REGISTRY/$REPOSITORY:latest .
-          docker push $REGISTRY/$REPOSITORY:latest
-          echo "image=$REGISTRY/$REPOSITORY:latest" >> $GITHUB_OUTPUT
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
+            
+      - name: Build and push Docker image to Amazon ECR
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          
+     
 
       
    
