@@ -14,26 +14,14 @@
 ## [ERD]<br>
 ![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/80e9bcc1-0b6b-49f1-9f42-fae832375626)<br>
 
-## [API]<br>
-![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/047a1398-a01a-451a-a90d-bf14907e3ab4)<br>
-
 ## [작업내용]<br>
 * 카카오 지도검색 API로 가까운 약국 3개 찾기(성북구만 지원 - Haversine formula 길찾기 활용)
 * 도메인 주도 설계(DDD - Direction, Pharmacy)
 * Redis(약국데이터 캐싱)
 * RetryConfig적용(API 호출시 지연시 잠시 대기 후 재시도)
-
-![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/fe7c6124-ac27-4be1-8558-b8ba6f61f135)
-* 지도위치 및 로드 뷰 제공<br>
-![image](https://github.com/MyoungSoo7/pharmacyrecommend/assets/13523622/40c9457d-e84f-48ac-a82e-3078760584c0)
-
-
-
-
-
-
+* 지도위치 및 로드 뷰 제공
+  
 ## [테스트]<br>
-> 'grooy 활용해서 테스트'
 * API테스트 
 
 
