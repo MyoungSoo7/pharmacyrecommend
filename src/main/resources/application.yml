@@ -54,7 +54,7 @@ server:
 pharmacy:
   recommendation:
     base:
-      url: http://localhost:8081/dir/
+      url: http://lmshi.shop:8081/dir/
 
 ---
 spring:
@@ -79,6 +79,6 @@ spring:
 pharmacy:
   recommendation:
     base:
-      url: http://3.38.78.187/dir/
+      url: http://lmshi.shop:8081/dir/
 
 
