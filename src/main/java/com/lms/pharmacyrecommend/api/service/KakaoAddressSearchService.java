@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -28,6 +29,10 @@ public class KakaoAddressSearchService {
     @Value("${kakao.rest.api.key}")
     private String kakaoRestApiKey;
 
+    private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" +
+            " AppleWebKit/537.36 (KHTML, like Gecko)" +
+            " Chrome/54.0.2840.99 Safari/537.36";
+
     @Retryable(
             exceptionExpression = "RuntimeException.class",
             maxAttempts = 2,
@@ -38,12 +43,23 @@ public class KakaoAddressSearchService {
         if(ObjectUtils.isEmpty(address)) return null;
 
         URI uri = kakaoUriBuilderService.buildUriByAddressSearch(address);
+        HttpEntity<?> requestEntity = createHttpEntityWithHeaders();
 
+        return fetchKakaoApiResponse(uri, requestEntity);
+    }
+
+
+    private HttpEntity<?> createHttpEntityWithHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.AUTHORIZATION, "KakaoAK " + kakaoRestApiKey);
-        HttpEntity<?> httpEntity = new HttpEntity<>(headers);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add(HttpHeaders.USER_AGENT, USER_AGENT);
 
-        return restTemplate.exchange(uri, HttpMethod.GET, httpEntity, KakaoApiResponseDto.class).getBody();
+        return new HttpEntity<>(headers);
+    }
+
+    private KakaoApiResponseDto fetchKakaoApiResponse(URI uri, HttpEntity<?> requestEntity) {
+        return restTemplate.exchange(uri, HttpMethod.GET, requestEntity, KakaoApiResponseDto.class).getBody();
     }
 
     @Recover
